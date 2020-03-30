@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
+import Navbar from "./components/navbar/navbar";
+import { Route, Switch, Redirect } from "react-router-dom";
+import Home from "./Views/Home/Home";
+import CreateClient from "./Views/CreateClient/CreateClient";
+import CreatePolicy from "./Views/CreatePolicy/CreatePolicy";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar></Navbar>
+      <br></br>
+      <Switch>
+        <Route path="/home" render={props => <Home {...props} />} />
+        <Route
+          path="/createClient"
+          render={props => <CreateClient {...props} />}
+        />
+        <Route
+          path="/createPolicy"
+          render={props => <CreatePolicy {...props} />}
+        />
+        <Redirect to="/home" />
+      </Switch>
     </div>
   );
 }
