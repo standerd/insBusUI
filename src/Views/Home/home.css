@@ -1,24 +1,24 @@
-.function{
-    display: flex;
-    height: 150px;
-    border: 1px solid black;
-    border-radius: 10px;
-    margin: 1%;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
+.function {
+  display: flex;
+  height: 150px;
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 1%;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
 }
 
 a {
-    color: black
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .welcome {
-    width: 90%;
-    margin: 0 auto;
-    padding: 1%;
-    margin-bottom: 3%;
-    border: 1px solid black;
-    border-radius: 10px;
-
+  width: 90%;
+  margin: 0 auto;
+  padding: 1%;
+  margin-bottom: 3%;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }

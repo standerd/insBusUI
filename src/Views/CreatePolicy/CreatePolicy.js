@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 function CreatePolicy(props) {
   const [validated, setValidated] = useState(false);
   const [type, setType] = useState("");
+  
 
   const handleSubmit = event => {
     const form = event.currentTarget;
