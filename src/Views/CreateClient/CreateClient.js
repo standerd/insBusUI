@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import axios from "axios";
 
 function CreateClient(props) {
   const [validated, setValidated] = useState(false);
@@ -26,27 +27,24 @@ function CreateClient(props) {
 
     // setValidated(true);
 
-    fetch(
-      "http://localhost:3001/client/newClient",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: name,
-          surname: surname,
-          email: email,
-          telNo: telNo,
-          cellNo: cellNo,
-          idNo: idNo,
-          street:street,
-          suburb: suburb,
-          city: city,
-          postal: postal
-        })
-      }
-    )
+    fetch("http://localhost:3001/client/newClient", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        surname: surname,
+        email: email,
+        telNo: telNo,
+        cellNo: cellNo,
+        idNo: idNo,
+        street: street,
+        suburb: suburb,
+        city: city,
+        postal: postal
+      })
+    })
       .then(res => res.json())
       .then(result => console.log(result))
       .catch(err => console.log(err));

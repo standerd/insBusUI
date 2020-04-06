@@ -21,6 +21,11 @@ function navbar(props) {
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
+      <Navbar.Collapse className="justify-content-end">
+        <Nav.Link as={Link} to="/login">
+          Login
+        </Nav.Link>
+      </Navbar.Collapse>
     </Navbar>
   );
 }

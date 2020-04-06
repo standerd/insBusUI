@@ -6,6 +6,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import Home from "./Views/Home/Home";
 import CreateClient from "./Views/CreateClient/CreateClient";
 import CreatePolicy from "./Views/CreatePolicy/CreatePolicy";
+import EmployeeLogin from "./Views/Login/EmployeeLogin"
+import EmployeeValidate from "./Views/Login/EmployeeValidate"
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
         <Route
           path="/createPolicy"
           render={props => <CreatePolicy {...props} />}
+        />
+         <Route
+          path="/login"
+          render={props => <EmployeeLogin {...props} />}
+        />
+         <Route
+          path="/validate"
+          render={props => <EmployeeValidate {...props} />}
         />
         <Redirect to="/home" />
       </Switch>
