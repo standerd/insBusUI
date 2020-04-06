@@ -8,6 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import "./home.css";
 
 function Home(props) {
+
   return (
     <div className="border p-3 m-2 rounded">
       <div className="welcome bg-light">

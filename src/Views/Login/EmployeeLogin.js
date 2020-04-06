@@ -4,6 +4,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
+/* -----------------------
+Employee Login Component
+--------------------------*/ 
+
 function EmployeeLogin(props) {
   const [validated, setValidated] = useState(false);
   const [employeeNo, setEmployeeNo] = useState("");
@@ -12,8 +16,11 @@ function EmployeeLogin(props) {
   const [errMessage, setErrMessage] = useState("");
   const [submit, setSubmit] = useState(false);
 
+  // User login submit handler
   const handleSubmit = event => {
     event.preventDefault();
+
+    //check form field validity, and set error messages.
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -22,6 +29,7 @@ function EmployeeLogin(props) {
     setValidated(true);
     setSubmit(true);
 
+    // login post request logging user in.
     axios
       .post("/user/login", {
         employeeNo: employeeNo,
@@ -36,6 +44,8 @@ function EmployeeLogin(props) {
         props.history.push("/home");
       })
       .catch(err => {
+        // if first time logging in, the user is requested to set an initial
+        // password
         if (
           err.response.data.message ===
           "User not yet activated, redirect to ammend password"

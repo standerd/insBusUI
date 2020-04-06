@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/navbar/navbar";
@@ -10,6 +10,19 @@ import EmployeeLogin from "./Views/Login/EmployeeLogin"
 import EmployeeValidate from "./Views/Login/EmployeeValidate"
 
 function App() {
+
+  const [auth, setAuth] = useState(false);
+
+  useEffect(()=> {
+    const isAuth = localStorage.getItem("token");
+    if(!isAuth){
+      setAuth(false);
+    } 
+    else {
+      setAuth(true);
+    }
+  }, [auth]);
+
   return (
     <div className="App">
       <Navbar></Navbar>

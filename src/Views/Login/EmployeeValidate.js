@@ -4,6 +4,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 
+/* -------------------------------------
+Employee Account Validation  Component
+----------------------------------------*/
+
 function EmployeeValidate(props) {
   const [validated, setValidated] = useState(false);
   const [password, setPassword] = useState("");
@@ -12,10 +16,13 @@ function EmployeeValidate(props) {
   const [errMessage, setErrMessage] = useState("");
   const [submit, setSubmit] = useState(false);
 
-  const handleSubmit = event => {
+  // password submit handler that confirms user password
+  // and activates the user's account.
+  const handleSubmit = (event) => {
     event.preventDefault();
+    //token is sent along to confirm the employee number to activate.
     let token = localStorage.getItem("token");
-    let employeeNo = localStorage.getItem("employeeNo")
+    let employeeNo = localStorage.getItem("employeeNo");
     const form = event.currentTarget;
     console.log(event.currentTarget);
     if (form.checkValidity() === false) {
@@ -25,26 +32,28 @@ function EmployeeValidate(props) {
     setValidated(true);
     setSubmit(true);
 
+    // check if the passwords match.
     if (password !== password2) {
       setError(true);
       setErrMessage("Passwords do Not Match");
       setSubmit(false);
     } else {
       axios
-        .post("/user/validate", 
-        {
-          password: password,
-          employeeNo: employeeNo
-        },
-        {headers: {"Authorization" : token}}
+        .post(
+          "/user/validate",
+          {
+            password: password,
+            employeeNo: employeeNo,
+          },
+          { headers: { Authorization: token } }
         )
-        .then(res => {
+        .then((res) => {
           setError(false);
           setErrMessage("");
           setSubmit(false);
           props.history.push("/login");
         })
-        .catch(err => {
+        .catch((err) => {
           setErrMessage(err.response.data);
           setError(true);
           setSubmit(false);
@@ -68,7 +77,7 @@ function EmployeeValidate(props) {
             minLength="6"
             type="password"
             placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">
             Please enter a valid password with a least 6 characters.
@@ -81,7 +90,7 @@ function EmployeeValidate(props) {
             required
             type="password"
             placeholder="Confirm Password"
-            onChange={e => setPassword2(e.target.value)}
+            onChange={(e) => setPassword2(e.target.value)}
           />
           <Form.Control.Feedback type="invalid">
             Please enter a valid password with a least 6 characters.
